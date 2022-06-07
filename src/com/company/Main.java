@@ -37,6 +37,7 @@ public class Main {
                 case 6:
                     printActions();
                     break;
+
             }
         }
     }
