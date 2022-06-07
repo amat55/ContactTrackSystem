@@ -7,14 +7,13 @@ public class Main {
     private static MobilePhone mobilePhone = new MobilePhone("791 296 549");
 
     public static void main(String[] args) {
-        // write your code here
         boolean quit = false;
         startPhone();
         printActions();
         while (!quit) {
             System.out.println("\nEnter action: ");
-            int action = 0;
-            action = scanner.nextInt();
+            int action = scanner.nextInt();
+            scanner.nextLine();
             switch (action) {
                 case 0:
                     System.out.println("\nShutting Down...");
@@ -26,7 +25,6 @@ public class Main {
                 case 2:
                     addNewContact();
                     break;
-                
                 case 3:
                     updateContact();
                     break;
@@ -37,7 +35,8 @@ public class Main {
                     queryContact();
                     break;
                 case 6:
-
+                    printActions();
+                    break;
             }
         }
     }
@@ -45,9 +44,9 @@ public class Main {
     public static void addNewContact() {
         System.out.println("Enter contact name: ");
         String name = scanner.nextLine();
-        System.out.println("Enter contact number");
+        System.out.println("Enter contact number: ");
         String number = scanner.nextLine();
-        Contact newContact = new Contact(name, number);
+        Contact newContact = Contact.createContact(name, number);
         if (mobilePhone.addNewContact(newContact)) {
             System.out.println("New contact added: name= " + name + " , phone=" + number);
         } else
@@ -88,11 +87,11 @@ public class Main {
     }
 
 
-    public static void queryContact(){
+    public static void queryContact() {
         System.out.println("Enter existing contact name:  ");
         String name = scanner.nextLine();
         Contact existingContactRecord = mobilePhone.queryContact(name);
-        if(existingContactRecord == null){
+        if (existingContactRecord == null) {
             System.out.println("Contact not found");
             return;
         }
@@ -106,13 +105,13 @@ public class Main {
 
     public static void printActions() {
         System.out.println("\nAvailable Actions\n");
-        System.out.println("\n0 - shutdown\n" +
-                "\n1 - print Contacts\n" +
-                "\n2 - to add a new contact\n" +
-                "\n3 - to update existing an existing contact\n" +
-                "\n4 - to remove an existing contact\n" +
-                "\n5 - query if an existing contact exist\n" +
-                "\n6 - to print a list of available actions");
+        System.out.print("\n0 - shutdown\n" +
+                "1 - print Contacts\n" +
+                "2 - to add a new contact\n" +
+                "3 - to update existing an existing contact\n" +
+                "4 - to remove an existing contact\n" +
+                "5 - query if an existing contact exist\n" +
+                "6 - to print a list of available actions");
         System.out.println("Choose your action: ");
     }
 

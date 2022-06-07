@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class MobilePhone {
     private String myNumber;
-    private ArrayList<Contact> myContact = new ArrayList<>();
+    private ArrayList<Contact> myContact;
 
     public MobilePhone(String myNumber) {
         this.myNumber = myNumber;
